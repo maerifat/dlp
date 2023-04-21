@@ -1,4 +1,3 @@
-
 from __future__ import print_function
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
@@ -351,6 +350,7 @@ def upload_file():
         else:
             print("File upload and sharing failed.")
     except Exception as e:
+        print("wrong")
         print(e)
         
 
@@ -375,9 +375,9 @@ def send_email(subject,  user_email):
     # Create a multipart message
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
-    msg['From'] = f'Rupifi Security Team <security@security.rupifi.com>'
+    msg['From'] = f'Rupifi Security Team <security@rupifi.com>'
     msg['To'] = RECIPIENT
-    msg['Reply-To'] = "security@rupifi.com"
+    #msg['Reply-To'] = "security@rupisfi.com"
 
 
 
@@ -436,9 +436,13 @@ security@rupifi.com
         )
         print("Email sent successfully.")
         print(f"Email sent to {user_email} with Message ID:", response['MessageId'])
+        with open("dlp.log", "a") as f:
+                f.write(f"{datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}-{user_email}-Email Sent Successfully\n")
         
     except ClientError as e:
         print("Email delivery failed: ", e.response['Error']['Message'])
+        with open("dlp.log", "a") as f:
+                f.write(f"{datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}-{user_email}-Email delivery failed\n")
         
 
 
@@ -462,10 +466,16 @@ for user_email in emails:
         if os.path.exists(f"{user_email}-{datestamp}.xlsx"):
             upload_file()
             print("File uploaded on drive- 200")
+            with open("dlp.log", "a") as f:
+                f.write(f"{datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}-{user_email}-File uploaded on drive- 200\n")
         else:
             print("Upload Failed - 404")
-    except:
-        print(Exception)
+            with open("dlp.log", "a") as f:
+                f.write(f"{datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}-{user_email}-Upload Failed - 404\n")
+    except Exception as e:
+        print(e)
+        with open("dlp.log", "a") as f:
+                f.write(f"{datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}-{user_email}-{e}\n")
 
 
 
