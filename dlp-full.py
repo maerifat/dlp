@@ -1,30 +1,23 @@
-from __future__ import print_function
 from openpyxl import Workbook
+from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font
 from openpyxl.utils import quote_sheetname
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
-import boto3
+from boto3 import
 from botocore.exceptions import ClientError
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from openpyxl import load_workbook, Workbook
-from openpyxl.worksheet.hyperlink import Hyperlink
-import concurrent.futures
-import time
-import multiprocessing
-import threading
-import os
+from openpyxl.utils import get_column_letter
+from openpyxl.styles import Font
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 from datetime import datetime, timedelta
-from openpyxl.utils import get_column_letter
-from openpyxl.styles import Font, PatternFill
 
 
 datestamp="April-2023"
