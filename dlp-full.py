@@ -128,7 +128,7 @@ def search_file(user_email):
 
                     #print(permission)
                     if ('emailAddress' in permission) and (len(permission['emailAddress']) > 2) :
-                        if not permission['emailAddress'].endswith(("@rupifi.com","@rupifi.in","@rupifi.co")):
+                        if not permission['emailAddress'].endswith(("@mydomain.com","@mydomain.com.in","@mydomain.com.co")):
                             shared_with.append(permission['emailAddress'].strip())
                             AnonymousStatus="No"
                     if 'anyone' in permission['type']:
@@ -235,7 +235,7 @@ def search_file(user_email):
 
 
 
-#send_email('Security Alert! - DLP April...',  'maerifat.majeed@rupifi.com', 'security@security.rupifi.com')
+#send_email('Security Alert! - DLP April...',  'zzyy@mydomain.com', 'sszz@security.mydomain.com')
 
 
 
@@ -250,7 +250,7 @@ def upload_file():
     key_path = "rahul.json"
 
     # Email address of the user to impersonate
-    email = "security@rupifi.com"
+    email = "security@mydomain.com"
 
     # ID of the folder to upload the file to
     #folder_id = "11FZL0KKbH4hiSmZKkz0usT-qGsEkZGUW"
@@ -368,9 +368,9 @@ def send_email(subject,  user_email):
     # Create a multipart message
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
-    msg['From'] = f'Rupifi Security Team <security@rupifi.com>'
+    msg['From'] = f'mydomain.com Security Team <security@mydomain.com>'
     msg['To'] = RECIPIENT
-    #msg['Reply-To'] = "security@rupisfi.com"
+    #msg['Reply-To'] = "zzyy@rupisfi.com"
 
 
 
@@ -396,8 +396,8 @@ Cross Check Folder permissions which are inherited to the files inside.
 </font>
 Best regards,<br>
 Security Team<br>
-Rupifi<br>
-security@rupifi.com
+mydomain.com<br>
+z@mydomain.com
 
 
 
