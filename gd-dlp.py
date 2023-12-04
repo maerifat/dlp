@@ -15,7 +15,7 @@ def search_file():
     if os.path.exists(key_path):
         creds = service_account.Credentials.from_service_account_file(
             key_path, scopes=["https://www.googleapis.com/auth/drive"],
-            subject="maerifat.majeed@rupifi.com"
+            subject="xxyyzzrupifi.com"
         )
 
     try:
